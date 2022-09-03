@@ -1,0 +1,102 @@
+<%- include('../cabecalho')%>
+
+      <div class="page-wrapper">
+        <div class="page-breadcrumb">
+          <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+              <div class="ms-auto text-end">
+                <nav aria-label="breadcrumb">
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <form class="form-horizontal" enctype="multipart/form-data" method="post">
+                  <div class="card-body">
+                    <h4 class="card-title">Adicionar Usuário</h4>
+                    <div class="form-group row">
+                      <label
+                        for="fname"
+                        class="col-sm-1 text-end control-label col-form-label"
+                        >Nome</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fname"
+                          placeholder="Insira o nome"
+                          name="nome"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="lname"
+                        class="col-sm-1 text-end control-label col-form-label"
+                        >Email</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="lname"
+                          placeholder="Insira o email"
+                          name="email"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="lname"
+                        class="col-sm-1 text-end control-label col-form-label"
+                        >Senha</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="lname"
+                          placeholder="Insira a senha"
+                          name="senha"
+                          required
+                        />
+                      </div>
+                    </div>
+                      
+                      <div class="form-group row">
+                        <label class="col-sm-1 text-end control-label col-form-label">
+                            Foto
+                        </label>
+                        <div class="col-sm-9">
+                            <div class="custom-file">
+                                <input
+                                type="file"
+                                class="custom-file-input"
+                                id="validatedCustomFile"
+                                name="foto"
+                                accept="image/*"
+                                required
+                                />
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="border-top">
+                    <div class="card-body">
+                      <input type="submit" class="btn btn-primary" value="Salvar">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<%- include('../rodape')%>

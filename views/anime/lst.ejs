@@ -1,0 +1,64 @@
+<%- include('../cabecalho')%>
+
+<div class="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-0">Animes</h4>
+            </div>
+            <div class="col-sm-12">
+              <div id="zero_config_filter" class="dataTables_filter">
+                <form method="post">
+                  <input type="text" class="form-control form-control-sm" placeholder="Insira o nome para pesquisa" aria-controls="zero_config" name="pesquisa">
+                  <input type="submit" class="btn btn-primary" value="Pesquisar">
+                </form>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Imagem</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Episódios</th>
+                  <th scope="col">Inicio</th>
+                  <th scope="col">Fim</th>
+                  <th scope="col">Diretor</th>
+                  <th scope="col">Estudio</th>
+                  <th scope="col">Generos</th>
+                  <th scope="col">Personagens</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Animes.forEach(function(anime){ %>                
+                <tr>
+                    <td><img style="max-width: 15%" src="/fotos/<%=anime.foto%>"></td>
+                  <td><%=anime.nome%></td>
+                  <td><%=anime.episodio%></td>
+                  <td><%=anime.inicio.getDate() + 1%>/<%=anime.inicio.getMonth() + 1%>/<%=anime.inicio.getFullYear()%></td>
+                  <td><%=anime.fim.getDate() + 1%>/<%=anime.fim.getMonth() + 1%>/<%=anime.fim.getFullYear()%></td>
+                  <td><%=anime.diretor.nome%></td> 
+                  <td><%=anime.estudio%></td>
+                  <td><%=anime.genero%></td>
+                  <td>
+                    <% anime.personagens.forEach(function(personagem){%>
+                      <%=personagem.nome%>
+                    <% }) %>
+                  </td> 
+                  <td>
+                    <a href="/anime/edt/<%=anime._id%>" style="font-size: 180%" class="mdi mdi-tooltip-edit"></a>
+                    <a href="/anime/del/<%=anime._id%>" style="font-size: 180%" class="mdi mdi-delete"></a>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../rodape')%>

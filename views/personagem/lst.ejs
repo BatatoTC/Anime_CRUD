@@ -1,0 +1,52 @@
+<%- include('../cabecalho')%>
+
+<div class="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-0">Personagens</h4>
+            </div>
+            <div class="col-sm-12">
+              <div id="zero_config_filter" class="dataTables_filter">
+                <form method="post">
+                  <input type="text" class="form-control form-control-sm" placeholder="Insira o nome para pesquisa" aria-controls="zero_config" name="pesquisa">
+                  <input type="submit" class="btn btn-primary" value="Pesquisar">
+                </form>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Animes</th>
+                  <th scope="col">Foto</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Personagens.forEach(function(personagem){ %>
+                <tr>
+                  <td><%=personagem.nome%></td>
+                  <td>
+                    <% personagem.animes.forEach(function(anime){%>
+                      <%=anime.nome%>
+                    <% }) %>
+                  </td>
+                  <td><img style="max-width: 15%" src="/fotos/<%=personagem.foto%>"></td>
+                  <td>
+                    <a href="/personagem/edt/<%=personagem._id%>" style="font-size: 180%" class="mdi mdi-tooltip-edit"></a>
+                    <a href="/personagem/del/<%=personagem._id%>" style="font-size: 180%" class="mdi mdi-delete"></a>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../rodape')%>
