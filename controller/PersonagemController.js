@@ -11,13 +11,13 @@ function add(req, res){
     var personagem = new Personagem();
     personagem.nome = req.body.nome;
     personagem.foto = req.file.filename;
-    personagem.animes = req.body.animes
+    personagem.animes = req.body.animes;
     personagem.save(function (err, result){
-        if (err) {
-            res.send("Aconteceu o seguinte erro: " + err);
-        } else {
-            for (let i = 0; i < req.body.animes.length; i++) {
-                Anime.findById(req.body.animes[i]).then(function (anime) {
+        if(err){
+            res.send("Aconteceu o seguinte erro: " +err);
+        }else{
+            for(let i = 0; i < personagem.animes.length; i++){
+                Anime.findById(personagem.animes[i]).then(function (anime){
                     anime.personagens.push(result._id);
                     anime.save();
                 });
@@ -63,7 +63,7 @@ function edt(req, res){
 };
 
 function del(req, res){
-    Personagem.findByIdAndDelete(req.params.id).then(function(valor){
+    Personagem.findByIdAndDelete(req.params.id).populate("animes").then(function(valor){
         for (let i = 0; i < valor.animes.length; i++) {
             Anime.findById(valor.animes[i]).then(function (anime) {
                 anime.personagens.splice(anime.personagens.indexOf(valor._id), 1);

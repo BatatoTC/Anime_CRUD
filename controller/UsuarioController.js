@@ -3,6 +3,7 @@ const Usuario = require("../model/Usuario");
 function opadd(req, res){
     res.render('usuario/add.ejs', {Login: req.user});
 };
+
 function add(req, res){
     var usuario = new Usuario();
     usuario.nome = req.body.nome;
@@ -14,9 +15,9 @@ function add(req, res){
             res.send(err);
         }else{
             res.redirect('/usuario/lst');
-        }
+        };
     });
-}
+};
 
 function lst(req, res){
     Usuario.find({}).then(function(usuarios){
@@ -36,6 +37,7 @@ function opedt(req, res){
         res.render("usuario/edt.ejs", {Usuario: usuario, Login: req.user});
     });
 };
+
 function edt(req, res){
     Usuario.findByIdAndUpdate(req.params.id, {
         nome: req.body.nome,

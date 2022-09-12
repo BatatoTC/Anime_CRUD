@@ -53,6 +53,12 @@ function edt(req, res){
 
 function del(req, res){
     Diretor.findByIdAndDelete(req.params.id).then(function(i){
+        for (let i = 0; i < valor.animes.length; i++) {
+            Anime.findById(valor.animes[i]).then(function (anime) {
+                anime.personagens.splice(anime.personagens.indexOf(valor._id), 1);
+                anime.save();
+            });
+        };
         res.redirect('/diretor/lst');
     });
 };

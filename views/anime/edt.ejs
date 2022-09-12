@@ -128,7 +128,7 @@
                     <div class="form-group row">
                         <label class="col-md-1 text-end">Diretor</label>
                         <div class="col-md-9" data-select2-id="11">
-                          <select class="select2 form-select shadow-none select2-hidden-accessible" name="diretor" style="width: 100%; height: 36px" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                          <select class="select2 form-select shadow-none select2-hidden-accessible" name="diretor" style="width: 100%; height: 36px" required data-select2-id="1" tabindex="-1" aria-hidden="true">
                             <option value="">Select</option>
                             <% Diretores.forEach(function(diretor){ %>
                               <option value="<%=diretor._id%>"><%=diretor.nome%></option>
@@ -136,17 +136,6 @@
                           </select>
                         </div>
                     </div>
-                    <!--Personagens-->
-                    <div class="form-group row">
-                        <label class="col-md-1 text-end">Personagens</label>
-                        <div class="col-md-9">
-                          <select class="select2 form-select shadow-none mt-3 select2-hidden-accessible" name="personagens" multiple="" style="height: 36px; width: 100%" data-select2-id="4" tabindex="-1" aria-hidden="true">
-                            <% Personagens.forEach(function(personagem){ %>
-                              <option value="<%=personagem._id%>"><%=personagem.nome%></option>
-                            <% }) %>%>
-                          </select>
-                        </div>
-                      </div>
                     <!--Imagem-->
                     <div class="form-group row">
                       <label class="col-sm-1 text-end control-label col-form-label">

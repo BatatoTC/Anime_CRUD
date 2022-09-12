@@ -20,18 +20,11 @@ function add(req, res){
     anime.genero = req.body.generos;
     anime.foto = req.file.filename;
     anime.diretor = req.body.diretor;
-    anime.personagens = req.body.personagens;
 
     anime.save(function (err, result){
-        if (err) {
+        if(err){
             res.send("Aconteceu o seguinte erro: " + err);
-        } else {
-            for (let i = 0; i < req.body.personagens.length; i++) {
-                Personagem.findById(req.body.personagens[i]).then(function (personagem) {
-                    personagem.animes.push(result._id);
-                    personagem.save();
-                });
-            };
+        }else{
             res.redirect("/anime/lst");
         };
     });
@@ -53,9 +46,7 @@ function filter(req, res){
 function opEdt(req, res){
     Anime.findById(req.params.id).then(function(anime){
         Diretor.find({}).then(function(diretores){
-            Personagem.find({}).then(function(personagens){
-                res.render('anime/edt.ejs', {Anime: anime, Diretores: diretores, Personagens: personagens, Login: req.user });
-            });
+            res.render('anime/edt.ejs', {Anime: anime, Diretores: diretores, Login: req.user });
         });
     });
 };
@@ -70,18 +61,17 @@ function edt(req, res){
         genero: req.body.generos,
         foto: req.file.filename,
         diretor: req.body.diretor,
-        personagens: req.body.personagens,
     }, function(err, result){
         if(result){
             res.redirect('/anime/lst');
         }else{
             res.render(err);
         };
-    }); 
+    });
 };
 
 function del(req, res){
-    Anime.findByIdAndDelete(req.params.id).then(function(valor){
+    Anime.findByIdAndDelete(req.params.id).populate("personagens").then(function(valor){
         for (let i = 0; i < valor.personagens.length; i++) {
             Personagem.findById(valor.personagens[i]).then(function (personagem) {
                 personagem.animes.splice(personagem.animes.indexOf(valor._id), 1);
