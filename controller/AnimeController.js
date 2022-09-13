@@ -37,8 +37,8 @@ function lst(req, res){
 };
 
 function filter(req, res){
-    var search = req.body.pesquisa;
-    Anime.find({name: RegExp(search, 'i')}).populate("diretor").populate("personagens").then(function(animes){
+    var pesquisa = req.body.pesquisa;
+    Anime.find({nome: RegExp(pesquisa, 'i')}).populate("diretor").populate("personagens").then(function(animes){
         res.render('anime/lst.ejs', {Animes: animes, Login: req.user});
     });
 };

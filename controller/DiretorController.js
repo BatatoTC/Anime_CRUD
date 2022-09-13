@@ -26,7 +26,7 @@ function lst(req, res){
 
 function filter(req, res){
     var search = req.body.pesquisa;
-    Diretor.find({name: RegExp(search, 'i')}).then(function(diretores){
+    Diretor.find({nome: RegExp(search, 'i')}).then(function(diretores){
         res.render('diretor/lst.ejs', {Diretores: diretores, Login: req.user});
     });
 };

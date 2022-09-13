@@ -35,7 +35,7 @@ function lst(req, res){
 
 function filter(req, res){
     var search = req.body.pesquisa;
-    Personagem.find({name: RegExp(search, 'i')}).populate("animes").then(function(personagens){
+    Personagem.find({nome: RegExp(search, 'i')}).populate("animes").then(function(personagens){
         res.render('personagem/lst.ejs', {Personagens: personagens, Login: req.user});
     });
 };

@@ -35,7 +35,7 @@
               <tbody>
                 <% Animes.forEach(function(anime){ %>                
                 <tr>
-                    <td><img style="max-width: 15%" src="/fotos/<%=anime.foto%>"></td>
+                    <td><img style="max-width: 35%" src="/fotos/<%=anime.foto%>"></td>
                   <td><%=anime.nome%></td>
                   <td><%=anime.episodio%></td>
                   <td><%=anime.inicio.getDate() + 1%>/<%=anime.inicio.getMonth() + 1%>/<%=anime.inicio.getFullYear()%></td>
@@ -45,7 +45,7 @@
                   <td><%=anime.genero%></td>
                   <td>
                     <% anime.personagens.forEach(function(personagem){%>
-                      <%=personagem.nome%>
+                      <%=personagem.nome%><br> 
                     <% }) %>
                   </td> 
                   <td>
